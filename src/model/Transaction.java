@@ -16,4 +16,13 @@ public class Transaction {
         this.returnDate = returnDate;
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "ISBN: " + isbn +
+               ", Borrower ID: " + borrowerId +
+               ", Borrowed: " + borrowDate +
+               ", Due: " + returnDate +
+               ", Status: " + status;
+    }
 }

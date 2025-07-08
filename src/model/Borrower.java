@@ -16,4 +16,13 @@ public class Borrower {
         this.borrowedBooks = new ArrayList<>();
         this.fines = 0.0;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + name +
+               "\nID: " + id +
+               "\nContact: " + contact +
+               "\nBorrowed Books: " + (borrowedBooks.isEmpty() ? "None" : borrowedBooks) +
+               "\nFines Owed: $" + String.format("%.2f", fines);
+    }
 }

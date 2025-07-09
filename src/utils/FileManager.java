@@ -1,13 +1,13 @@
 package utils;
 
-import model.*;
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
+import model.*;
 
 public class FileManager {
 
-    // Save Methods
+    // Writes all book records to file
     public static void saveBooks(List<Book> books, String path) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path));
         for (Book b : books) {
@@ -18,6 +18,7 @@ public class FileManager {
         writer.close();
     }
 
+    // Writes all borrower records to file
     public static void saveBorrowers(Collection<Borrower> borrowers, String path) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path));
         for (Borrower b : borrowers) {
@@ -27,6 +28,7 @@ public class FileManager {
         writer.close();
     }
 
+    // Writes all transaction records to file
     public static void saveTransactions(List<Transaction> transactions, String path) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path));
         for (Transaction t : transactions) {
@@ -53,7 +55,8 @@ public class FileManager {
         reader.close();
         return books;
     }
-
+ 
+    // Reads borrower records from file and reconstructs objects
     public static List<Borrower> loadBorrowers(String path) throws IOException {
         List<Borrower> borrowers = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new FileReader(path));

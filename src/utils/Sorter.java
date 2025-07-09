@@ -4,6 +4,8 @@ import model.Book;
 import java.util.*;
 
 public class Sorter {
+    / Sorts books by title using merge sort (divide and conquer)
+    // Stable and efficient for large datasets (O(n log n))
     public static void mergeSortByTitle(List<Book> books) {
         if (books.size() <= 1) return;
         int mid = books.size() / 2;

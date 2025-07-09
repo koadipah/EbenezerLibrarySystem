@@ -3,9 +3,13 @@ package model;
 import java.util.*;
 
 public class Borrower {
+    // Borrower's full name
     public String name;
+     // Unique borrower ID
     public String id;
+     // List of ISBNs representing books currently borrowed
     public List<String> borrowedBooks;
+      // Total fines owed by the borrower
     public double fines;
     public String contact;
 

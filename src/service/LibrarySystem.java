@@ -1,20 +1,24 @@
 package service;
 
-import model.*;
-import utils.FileManager;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
+import model.*;
+import utils.FileManager;
 
 public class LibrarySystem {
+    // Used to manage book storage and retrieval
     private BookInventory inventory = new BookInventory();
+      // Stores registered borrowers
     private BorrowerRegistry registry = new BorrowerRegistry();
+    // Tracks all book borrowing/returning activity
     private LendingTracker tracker = new LendingTracker();
+     // Monitors overdue books based on transactions
     private OverdueMonitor monitor = new OverdueMonitor(registry);
 
     public void run() {
-        loadAllData();  // ⬅️ Load data at startup
+        loadAllData();  //  Load data at startup
 
         Scanner scanner = new Scanner(System.in);
         try {

@@ -1,14 +1,15 @@
 package service;
 
-import model.Transaction;
-import model.Borrower;
-
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import model.Borrower;
+import model.Transaction;
 
 public class OverdueMonitor {
+     // PriorityQueue to keep overdue transactions ordered by return date (earliest first)
     private PriorityQueue<Transaction> overdueQueue = new PriorityQueue<>(Comparator.comparing(t -> t.returnDate));
+    // Registry used to retrieve and update borrower fine information
     private BorrowerRegistry registry;
 
     public OverdueMonitor(BorrowerRegistry registry) {
@@ -34,6 +35,7 @@ public class OverdueMonitor {
         }
         System.out.println("Overdue books:");
         System.out.println(" ");
+        // Convert PriorityQueue to List for display
         return new ArrayList<>(overdueQueue);
     }
 }

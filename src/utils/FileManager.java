@@ -11,9 +11,14 @@ public class FileManager {
     public static void saveBooks(List<Book> books, String path) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(path));
         for (Book b : books) {
-            writer.write(String.join(",", b.title, b.author, b.isbn, b.category,
-                    String.valueOf(b.year), b.publisher, b.shelfLocation));
-            writer.newLine();
+            writer.write("Title: " + b.title + "\n");
+            writer.write("Author: " + b.author + "\n");
+            writer.write("ISBN: " + b.isbn + "\n");
+            writer.write("Category: " + b.category + "\n");
+            writer.write("Year: " + b.year + "\n");
+            writer.write("Publisher: " + b.publisher + "\n");
+            writer.write("Shelf: " + b.shelfLocation + "\n");
+            writer.write("---\n"); // Separator between books
         }
         writer.close();
     }

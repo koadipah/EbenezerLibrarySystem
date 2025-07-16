@@ -40,8 +40,9 @@ public class LibrarySystem {
                 System.out.println("10. Lookup Borrower by ID");
                 System.out.println("11. Return a Book");
                 System.out.println("12. View All Transactions");
-                System.out.println("13. Exit the System");
-                System.out.print("Enter your choice (1–13): \n");
+                System.out.println("13. Remove a Book");
+                System.out.println("14. Exit the System");
+                System.out.print("Enter your choice (1–14): \n");
 
                 int choice;
                 try {
@@ -223,6 +224,25 @@ public class LibrarySystem {
                         }
                     }
                     case 13 -> {
+                        System.out.print("Enter ISBN of book to remove: ");
+                        String removeIsbn = scanner.nextLine().trim();
+                        
+                        // Validate ISBN format
+                        if (!removeIsbn.matches("\\d+")) {
+                            System.out.println("Invalid ISBN. Only numbers are allowed.\n");
+                            break;
+                        }
+
+                        // Check if book exists
+                        Book book = inventory.searchByISBN(removeIsbn);
+                        if (book == null) {
+                            System.out.println("Book not found. Nothing removed.\n");
+                        } else {
+                            inventory.removeBook(removeIsbn);
+                            System.out.println("Book with ISBN " + removeIsbn + " removed successfully.\n");
+                        }
+                    }
+                    case 14 -> {
                         System.out.println("Goodbye\n");
                         return;
                     }
